@@ -1,8 +1,6 @@
 FROM node:8
 
-ENV PORT=80
-ENV NOME_FILA=Colaboradores
-ENV NOMETABELA=tabela_colaboradores
+ENV NODE_ENV prod
 
 WORKDIR /app
 

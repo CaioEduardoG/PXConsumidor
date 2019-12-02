@@ -1,6 +1,9 @@
 const { Consumer } = require('sqs-consumer');
 const aws = require('aws-sdk');
 
+if(`${process.env.NODE_ENV}` === "dev")
+    require('dotenv').config();
+
 if(!aws.config.region){
   aws.config.update({
     region: 'us-east-2'
