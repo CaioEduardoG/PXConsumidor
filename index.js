@@ -1,5 +1,6 @@
 const { Consumer } = require('sqs-consumer');
 const aws = require('aws-sdk');
+const express = require('express');
 
 if(`${process.env.NODE_ENV}` === "dev")
     require('dotenv').config();
@@ -12,6 +13,12 @@ if(!aws.config.region){
 
 const dadosUser = new aws.DynamoDB.DocumentClient();
 const sqs = new aws.SQS();
+const appc = express();
+
+appc.get("/healthcheck", (req,res) => {
+  return res.status(200).json("Healthcheck okay!");
+});
+
 
 let pegarUrlFila = async() => {
   return await new Promise((resolve, reject) => {
